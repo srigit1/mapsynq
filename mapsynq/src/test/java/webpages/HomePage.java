@@ -25,6 +25,9 @@ public class HomePage {
 	@FindBy(xpath="//a[contains(text(),'Register')]")
 	WebElement registerLink;
 	
+	@FindBy(xpath="//a[contains(text(),'Mobile App')]")
+	WebElement mobileAppLink;
+	
 	@FindBy(xpath="//a[contains(text(),'Galactio')]")
 	WebElement galactioLink;
 	
@@ -67,7 +70,20 @@ public class HomePage {
 	WebElement searchCameras;
 	
 	
-
+	@FindBy(xpath= "//a[contains(text(),'or Create Account')]")
+	WebElement signInPage;
+	
+	@FindBy(xpath= "//h5[contains(text(),'Create your mapSYNQ account')]")
+	WebElement registerAccountPage;
+	
+	@FindBy(xpath= "//a[contains(text(),'BACK')]")
+	WebElement backLink;
+	
+	@FindBy(xpath= "//a[contains(text(),'MAPSYNQ')]")
+	WebElement mapsynqLink;
+	
+	
+	
 	 public HomePage(WebDriver driver){
 	       this.driver=driver;
 	       //Initialise Elements
@@ -84,6 +100,7 @@ public class HomePage {
 	 {
 		 signinLink.isDisplayed();
 		 registerLink.isDisplayed();
+		 mobileAppLink.isDisplayed();
 		 galactioLink.isDisplayed();
 		 gpsnavigationLink.isDisplayed();
 		 gpsnavigationLink.isDisplayed();
@@ -99,5 +116,53 @@ public class HomePage {
 		 liveTab.isDisplayed();
 		 System.out.println("all options in v pane are displayed");
 	 }
+	 
+	 public void navigationonClick_horizontalPaneLinks() throws InterruptedException
+	 {
+		 Thread.sleep(2000);
+		 signinLink.click();
+		 signInPage.isDisplayed();
+		 System.out.println("Navigated to signin  page");
+		 backLink.click();
+		 Thread.sleep(2000);
+		 registerLink.click();
+		 Thread.sleep(2000);
+		 registerAccountPage.isDisplayed();
+		 System.out.println("Navigated to register account page");
+		 Thread.sleep(2000);
+		 backLink.click();
+		 String parentHandle = driver.getWindowHandle();
+		 mobileAppLink.click();
+		 for (String winHandle : driver.getWindowHandles()) {
+		     driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle
+		 }
+		
+		 driver.getTitle().equalsIgnoreCase("mapSYNQ Mobile");
+		 System.out.println("Navigated to mobile app  page");
+		 Thread.sleep(2000);
+		 mapsynqLink.click();
+		 driver.switchTo().window(parentHandle); 
+		 
+		 galactioLink.click();
+		 for (String winHandle : driver.getWindowHandles()) {
+		     driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle
+		 }
+		 driver.getTitle().equalsIgnoreCase("Galactio");
+		 System.out.println("Navigated to galactio page");
+		 driver.close();
+		 driver.switchTo().window(parentHandle); 
+		
+		 gpsnavigationLink.click();
+		 for (String winHandle : driver.getWindowHandles()) {
+		     driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle
+		 }
+		 driver.getTitle().equalsIgnoreCase("Google Play");
+		 driver.close();
+		 driver.switchTo().window(parentHandle); 
+		 System.out.println("Navigated to gps navigation pages");
+		 
+	 }
+	 
+	 
 
 }

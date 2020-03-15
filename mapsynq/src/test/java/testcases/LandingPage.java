@@ -28,17 +28,27 @@ public class LandingPage {
 	       driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 	   }
 	   
-	  
+	//Testcase 1:Verify MapSynq Page is displayed and all tabs are displayed 
 	 @Test
 	 public void checkOptionsLandingPage() throws InterruptedException
 	 {
 		 
 		 HomePage homepage=new HomePage(driver);
 		 homepage.verifymapsynqHeading();
-		 homepage.verifyHorizontalPaneLinks();
-		 homepage.verifyVerticalPaneLinks();
+		// homepage.verifyHorizontalPaneLinks();
+		// homepage.verifyVerticalPaneLinks();
+		 homepage.navigationonClick_horizontalPaneLinks();
 
      }
+	 
+	/*
+	 * @Test
+	 * 
+	 * public void verifyNavigationPagesOf_HorizontalPaneLinks() throws
+	 * InterruptedException { HomePage homepage=new HomePage(driver);
+	 * 
+	 * }
+	 */
 	 
 	 @After
 	 public void quit()
