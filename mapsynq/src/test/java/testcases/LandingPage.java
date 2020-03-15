@@ -1,66 +1,29 @@
 package testcases;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
 
 import webpages.HomePage;
 
+public class LandingPage extends InitClass {
 
 
-
-public class LandingPage {
-	
-	WebDriver driver;
-	
-	 @Before
-	   public void setup(){
-	      
-	   	    System. setProperty("webdriver.chrome.driver", "C:\\Users\\user\\Downloads\\chromedriver_win32\\chromedriver.exe");
-	       driver = new ChromeDriver();
-	       driver.manage().window().maximize();
-	       driver.get("http://www.mapsynq.com");
-	       driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-	   }
-	   
-	//Testcase 1:Verify MapSynq Page is displayed and all tabs are displayed 
-	 @Test
-	 public void checkOptionsLandingPage() throws InterruptedException
-	 {
-		 
-		 HomePage homepage=new HomePage(driver);
-		 homepage.verifymapsynqHeading();
-		// homepage.verifyHorizontalPaneLinks();
-		// homepage.verifyVerticalPaneLinks();
-		// homepage.navigationonClick_horizontalPaneLinks();
-		// homepage.verifyGlobalSearchFunctionality();
-		// homepage.verifyDirectionsFunctionality();
-		// homepage.verifyLiveTabFunctionality();
-		// homepage.verifyIncidentsInMap();
-		 homepage.verifyLegendFunctionality();
-		 homepage.verifyCalendarFunctionality();
-
-     }
-	 
 	/*
-	 * @Test
 	 * 
-	 * public void verifyNavigationPagesOf_HorizontalPaneLinks() throws
-	 * InterruptedException { HomePage homepage=new HomePage(driver);
+	 * Testcase 1: Verify MapSynq Page is loaded properly with all the required tabs
+	 * and links In this method,it verifies that mapsynq page is loaded properly.
+	 * And all the required tabs like signin,register etc and directions,live are
+	 * displayed.
 	 * 
-	 * }
 	 */
-	 
-	 @After
-	 public void quit()
-	 {
-		 driver.quit();
-	 }
-	 
+
+	@Test(priority = 0)
+	public void checkOptionsLandingPage() throws InterruptedException {
+
+		HomePage homepage = new HomePage(driver);
+		homepage.verifymapsynqHeading();
+		homepage.verifyHorizontalPaneLinks();
+		homepage.verifyVerticalPaneLinks();
+
+	}
+
 }
- 
