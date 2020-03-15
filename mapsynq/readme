@@ -1,0 +1,49 @@
+
+Softwares required: Download Java,Maven,TestNG,Chrome browser
+
+
+Import this project as Maven Project.
+
+Steps to execute:
+
+1.mvn clean
+2.mvn install
+3. from commandline to execute,use this command
+mvn test -Dsuitename="src/test/resources/testng.xml"
+4.Can execute from IDE as a testng suite also
+
+can refer emailablereport.html for test execution report.
+
+Testcases Automated:
+
+1.Verfifying mapsynq page is loaded with all the tabs and links.
+
+2.Verify all the links such as signin,register,mobileapp,galactio,gps naviagtion are taking to corresponding pages properly.
+
+3.verify global search option is working
+
+4.verify directions fucntioanlity is working
+
+5.verify live tab with incidents,camera,tolls functioanlity is working and displaying corresponding locations in maps.
+
+6.verify legend,calendar is working
+
+7.verify zoombar and togglebar functioanlity.
+
+
+Issues observed in mapsynq website while working:
+
+1.Back link is not working in mobileapp page
+2.Global search is not working
+3.Directions is not working
+4.Page does not load intermittently.
+
+
+Can enhance this project if time permits.Things in my mind for further enhancements:
+
+1.Considering BDD Framework with cucumber.
+2.Code optimization
+3.multiple browsers vs os
+4.Report enhancemnets
+
+
