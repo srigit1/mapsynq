@@ -58,7 +58,7 @@ public class HomePage {
 	WebElement CamerasTab;
 	
 	
-	@FindBy(xpath="//label[@class='radioset_live ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right ui-state-hover']//span[@class='ui-button-text']")
+	@FindBy(xpath=" //h2[contains(text(),'Tolls')]")
 	WebElement tollsTab;
 	
 	
@@ -82,6 +82,41 @@ public class HomePage {
 	@FindBy(xpath= "//a[contains(text(),'MAPSYNQ')]")
 	WebElement mapsynqLink;
 	
+	@FindBy(xpath= "//input[@id='poi_from']")
+	WebElement fromLocation;
+	
+	@FindBy(xpath= "//input[@id='poi_to']")
+	WebElement toLocation;
+	
+	@FindBy(xpath= " //input[@id='get_direction']")
+	WebElement getDirections;
+	
+	
+	@FindBy(xpath= " //a[contains(text(),'Adam Road (Towards Changi)')]")
+	WebElement firstcameraAdamRoadLink;
+	
+	@FindBy(xpath= "//b[contains(text(),'PIE - Adam Road (Towards Changi)')]")
+	WebElement cameraMapLocation;
+	
+	@FindBy(xpath= "//a[contains(text(),'Anson Road')]")
+	WebElement tollsAnsonRoadLink;
+	
+
+	@FindBy(xpath= "//b[contains(text(),'Anson Road')]")
+	WebElement tollsMapLocation;
+	
+	@FindBy(xpath= "//div[@class='item_time'][contains(text(),'14:17')]")
+	WebElement incidentLink;
+	
+	
+	@FindBy(xpath= "//div[@id='popup_contentDiv']")
+	WebElement incidentpopup;
+	
+	@FindBy(xpath= "//span[@id='ui-dialog-title-incidentLegend']")
+	WebElement legendPopup;
+	
+	@FindBy(xpath= " //span[@id='ui-dialog-title-div_events']")
+	WebElement calendarPopup;
 	
 	
 	 public HomePage(WebDriver driver){
@@ -163,6 +198,74 @@ public class HomePage {
 		 
 	 }
 	 
+	public void verifyGlobalSearchFunctionality()
+	{
+		globalSearchBox.sendKeys("544268");
+		globalsearch.click();
+		driver.navigate().refresh();
+			
+	}
+	
+	public void verifyDirectionsFunctionality()
+	{
+		fromLocation.clear();
+		fromLocation.sendKeys("544268");
+		toLocation.clear();
+		toLocation.sendKeys("570101");
+		getDirections.click();
+	}
 	 
+	 
+  public void verifyLiveTabFunctionality()
+  {
+	  
+	  liveTab.click();
+	  searchIncidents.clear();
+	  searchIncidents.sendKeys("PIE");
+	  CamerasTab.click();
+	  firstcameraAdamRoadLink.click();
+	  driver.switchTo().frame(0);
+	  cameraMapLocation.isDisplayed();
+	  System.out.println("camera location is displayed in maps");
+	  driver.switchTo().defaultContent();
+	  tollsTab.click();
+	  tollsAnsonRoadLink.click();
+	  driver.switchTo().frame(0);
+	  tollsMapLocation.isDisplayed();
+	  driver.switchTo().defaultContent();
+	  System.out.println("tolls location is displayed in maps");
+	  
+	  
+	  
+  }
+  
+  public void verifyIncidentsInMap()
+  {
+	  String parentHandle = driver.getWindowHandle();
+	  incidentLink.click();
+	  for (String winHandle : driver.getWindowHandles()) {
+		     driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle
+		 }
+	  incidentpopup.isDisplayed();
+	  driver.close();
+	  //driver.switchTo().window(parentHandle); 
+	  
+  }
+  
+  public void verifyLegendFunctionality()
+  {
+	  legendLink.click();
+	  legendPopup.isDisplayed();
+	  System.out.println("legend popup is displayed");
+	  
+  }
+  
+  public void verifyCalendarFunctionality()
+  {
+	  calendarLink.click();
+	  calendarPopup.isDisplayed();
+	  System.out.println("calendar popup is displayed");
+  }
+
 
 }

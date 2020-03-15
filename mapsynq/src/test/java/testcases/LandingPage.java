@@ -37,7 +37,13 @@ public class LandingPage {
 		 homepage.verifymapsynqHeading();
 		// homepage.verifyHorizontalPaneLinks();
 		// homepage.verifyVerticalPaneLinks();
-		 homepage.navigationonClick_horizontalPaneLinks();
+		// homepage.navigationonClick_horizontalPaneLinks();
+		// homepage.verifyGlobalSearchFunctionality();
+		// homepage.verifyDirectionsFunctionality();
+		// homepage.verifyLiveTabFunctionality();
+		// homepage.verifyIncidentsInMap();
+		 homepage.verifyLegendFunctionality();
+		 homepage.verifyCalendarFunctionality();
 
      }
 	 
