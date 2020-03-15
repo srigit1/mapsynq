@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="mapsynq suite" parallel="tests" thread-count="1" > 
+
+    
+ <test name="Landing Page Scenarios" preserve-order="true">
+ 
+    <classes>
+      <class name="testcases.LandingPage" />
+    </classes>
+  </test>
+ 
+   <test name="Horizontal pane Scenarios"  preserve-order="true">
+       <classes>         
+        <class name="testcases.HorizontalPaneFunctionalities"/>
+            
+       </classes>    
+                  
+  </test>
+       
+       <test name="Vertical Pane Scenarios" preserve-order="true">
+          <classes>
+                 
+            <class name="testcases.VerticalPaneFunctionalities"/>
+        
+           </classes>        
+       </test>             
+   
+                  
+                                   
+</suite> 
+
